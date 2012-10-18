@@ -1,19 +1,19 @@
 YUI.add('cweepy:models:cweep_list', function (Y) {
 
-  Y.namespace('Cweepy').CweepList = Y.Base.create('cweepy:cweep_list',
+  Y.namespace('Cweepy').CweepList = Y.Base.create('cweepy:cweepList',
     Y.ModelList,
     [Y.ModelSync.REST],
   {
-    url: '/cweeps',
-    model: Y.Cweepy.Cweep
+    model: Y.Cweepy.Cweep,
+    url: '/cweeps'
   });
-
+  
 },
 '0.0.1',
 {
   requires: [
     'model-list',
-    'model-sync-rest',
-    'cweepy:models:cweep'
+    'cweepy:models:cweep',
+    'model-sync-rest'
   ]
 });

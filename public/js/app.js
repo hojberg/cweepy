@@ -1,34 +1,31 @@
 YUI.add('cweepy:app', function (Y) {
 
-  Y.namespace('Cweepy').App = Y.Base.create('cweepy:app', 
+  Y.namespace('Cweepy').App = Y.Base.create('cweepy:app',
     Y.App,
     [],
   {
 
     views: {
-      cweeps: { type: Y.Cweepy.CweepListView }
+      cweeps: { type: Y.Cweepy.CweepListView } 
     },
 
     render: function () {
-      this.constructor.superclass.render.call(this);
-      this._renderHeader();
+      this.get('viewContainer').insert(
+        new Y.Cweepy.HeaderView({
+          modelList: this.get('cweepList')
+        }).render().get('container'),
+        'before'
+      );
+
       return this;
     },
 
-    _renderHeader: function () {
-      this.get('viewContainer').insert(
-        this.get('headerView').render().get('container'),
-        'before'
-      );
-    },
-
-    showCweeps: function (req, res) {
+    showCweeps: function () {
       var cweepList = this.get('cweepList');
 
-      this.showView(
-        'cweeps', 
-        { modelList: cweepList }
-      );
+      this.showView('cweeps', {
+        modelList: cweepList
+      });
 
       cweepList.load();
     }
@@ -36,10 +33,9 @@ YUI.add('cweepy:app', function (Y) {
   },
   {
     ATTRS: {
-
       routes: {
         value: [
-          { path: '/', callbacks: 'showCweeps' }
+          { path: '/', callback: 'showCweeps' }
         ]
       },
 
@@ -47,16 +43,7 @@ YUI.add('cweepy:app', function (Y) {
         valueFn: function () {
           return new Y.Cweepy.CweepList();
         }
-      },
-
-      headerView: {
-        valueFn: function () {
-          return new Y.Cweepy.HeaderView({
-            modelList: this.get('cweepList')
-          });
-        }
       }
-
     }
   });
 
@@ -64,9 +51,9 @@ YUI.add('cweepy:app', function (Y) {
 '0.0.1',
 {
   requires: [
-    'app',
+    'app-base', 
+    'cweepy:views:cweep_list',
     'cweepy:models:cweep_list',
-    'cweepy:views:header',
-    'cweepy:views:cweep_list'
+    'cweepy:views:header'
   ]
 });
