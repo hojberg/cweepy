@@ -1,0 +1,12 @@
+{
+  "name": "prov-js-yui-oct",
+  "author": "Simon Hojberg",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node server"
+  },
+  "dependencies": {
+    "express": "latest"
+  }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang='en'>
+
+  <head>
+    <meta charset='utf-8'/>
+    <title>Cweepy</title>
+    <link rel="stylesheet" type="text/css" href="css/master.css">
+
+    <script type='text/handlebars' id='header-tmpl'>
+      <header>
+        <div class='header'>
+          <h1>Cweepy</h1>
+          <div class='add-cweep'>+</div>
+        </div>
+      </header>
+    </script>
+
+    <script type='text/handlebars' id='add-cweep-tmpl'>
+      <div class='add-cweep-form'>
+        <input type='text' class='message' placeholder="What's cweeping you out?" />
+        <a class='button post'>Post!</a>
+      </div>
+    </script>
+
+    <script type='text/handlebars' id='cweep-list-item-tmpl'>
+      <li>
+        <div class='avatar' style='background: url({{avatar}}); background-size: 50px 50px;'></div>
+        <div class='message'>{{message}}</div>
+      </li>
+    </script>
+  </head>
+
+  <body>
+    <article id='app'>
+      <div id='content'></div>
+    </article>
+
+    <script src="http://yui.yahooapis.com/3.7.2/build/yui/yui-min.js"></script>
+    <script src='/js/yui_config.js'></script>
+    <script>
+      YUI().use('cweepy:app', function (Y) {
+
+        new Y.Cweepy.App({
+          container:      '#app',
+          viewContainer:  '#content'
+        }).render().dispatch();
+
+      });
+    </script>
+  </body>
+
+</html>
