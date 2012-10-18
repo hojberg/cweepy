@@ -24,13 +24,10 @@ YUI.add('cweepy:views:add_cweep', function (Y) {
     save: function () {
       var message = this.get('container').one('.message').get('value');
 
-      this.get('modelList').create(
-        { 
-          avatar: 'https://si0.twimg.com/profile_images/1968705093/avatar.jpg', 
-          message: message
-        },
-        { index: 0 }
-      );
+      this.get('modelList').create({
+        avatar: 'https://si0.twimg.com/profile_images/1968705093/avatar.jpg', 
+        message: message
+      });
 
       this.remove();
     }
