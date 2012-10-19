@@ -7,7 +7,9 @@
     <title>Cweepy</title>
     <link rel="stylesheet" type="text/css" href="css/master.css">
 
-    <script type='text/provjs' id='cweepy-header-tmpl'> 
+    <!-- In a real world production app, you should precompile templates -->
+
+    <script type='text/x-handlebars' id='cweepy-header-tmpl'> 
       <header>
         <div class='header'>
           <h1>Cweepy</h1>
@@ -16,14 +18,14 @@
       </header>
     </script>
 
-    <script type='text/provjs' id='cweepy-add-cweep-tmpl'> 
+    <script type='text/x-handlebars' id='cweepy-add-cweep-tmpl'> 
       <div class='add-cweep-form'>
         <input type='text' class='message' />
         <a class='button post'>POST!</a>
       </div>
     </script>
 
-    <script type='text/provjs' id='cweepy-list-item-tmpl'> 
+    <script type='text/x-handlebars' id='cweepy-list-item-tmpl'> 
       <li>
         <div class='avatar' style='background: url({{avatar}}); background-size: 40px 40px;'></div>
         <div class='message'>{{message}}</div>
@@ -42,8 +44,8 @@
 
       var Y = YUI().use('cweepy:app', 'cweepy:models:cweep_list', function (Y) {
         new Y.Cweepy.App({
-          container: '#app',
-          viewContainer: '#content'
+          container:      '#app',
+          viewContainer:  '#content'
         }).render().dispatch();
       });
 
