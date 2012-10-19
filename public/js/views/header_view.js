@@ -1,6 +1,6 @@
 YUI.add('cweepy:views:header', function (Y) {
 
-  Y.namespace('Cweepy').HeaderView = Y.Base.create('cweepy:app',
+  Y.namespace('Cweepy').HeaderView = Y.Base.create('cweepy:headerView',
     Y.View,
     [],
   {
@@ -10,33 +10,40 @@ YUI.add('cweepy:views:header', function (Y) {
     },
 
     template: Y.Handlebars.compile(
-      Y.one('#header-tmpl').getContent()
+      Y.one('#cweepy-header-tmpl').getContent()
     ),
 
     render: function () {
       this.get('container').setContent(
         this.template()
       );
-
       return this;
     },
 
     showAddCweep: function () {
       this.get('container').append(
-        new Y.Cweepy.AddCweepView({
-          modelList: this.get('modelList')
-        }).render().get('container')
+        this.get('addCweepView').render().get('container')
       );
     }
 
+  },
+  {
+    ATTRS: {
+      addCweepView: {
+        valueFn: function () {
+          return new Y.Cweepy.AddCweepView({
+            modelList: this.get('modelList')
+          });
+        }
+      }
+    }
   });
 
 },
-'0.0.1', 
+'0.0.1',
 {
   requires: [
     'view',
-    'cweepy:views:add_cweep',
-    'handlebars'
+    'cweepy:views:add_cweep'
   ]
 });

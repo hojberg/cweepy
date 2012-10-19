@@ -23,7 +23,7 @@ server.get('/', function (req, res, next) {
 });
 
 var FAKE_DATA_STORE = [
-  { avatar: 'https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg', message: 'Tom Dale is my hero' },
+  { avatar: 'https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg', message: 'I love ActionScript' },
   { avatar: 'https://si0.twimg.com/profile_images/2201732897/notch_weird.png', message: 'Endermen used to be people' },
   { avatar: 'https://si0.twimg.com/profile_images/1968705093/avatar.jpg', message: 'dat cweep' },
   { avatar: 'https://si0.twimg.com/profile_images/2536088319/4sl2go65was3o0km520j_reasonably_small.jpeg', message: "We don't go to Ravenholm" }
